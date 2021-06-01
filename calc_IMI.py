@@ -55,7 +55,6 @@ def main():
 
 def return_true_result(ans: int, index: int):
     if index in reverse_item:
-        #TODO: ansじゃなくてjでみる
         return 8 - ans
     else:
         return ans
