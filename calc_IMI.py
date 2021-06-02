@@ -20,9 +20,6 @@ def main():
                         lineterminator="\r\n", quotechar='"', skipinitialspace=True)
 
         header = next(f2)
-        # len(f2) == 24
-        # つまり、j - 1
-        # 一人一人回す
         for i, row in enumerate(f2):
             print(i)
             for j, ans in enumerate(row):
@@ -51,6 +48,24 @@ def main():
             pressure_tension_sum = 0
 
     print(res)
+    print(calc_average(res))
+    # {0: [24, 8, 18, 5], 1: [36, 14, 24, 6], '加藤祐樹': [18, 9, 15, 17], '野中駿': [34, 22, 22, 5], '西村拓海': [24, 16, 19, 15]}
+
+
+def calc_average(res):
+    # 平均を出すことにあまり意味はない
+    interest_enjoyment_sum_all = 0
+    perceived_competence_sum_all = 0
+    perceived_choice_sum_all = 0
+    pressure_tension_sum_all = 0
+    # val == [1,2,3,4]
+    for val in res.values():
+        interest_enjoyment_sum_all += val[0]
+        perceived_competence_sum_all += val[1]
+        perceived_choice_sum_all += val[2]
+        pressure_tension_sum_all += val[3]
+
+    return [interest_enjoyment_sum_all/len(res), perceived_competence_sum_all/len(res), perceived_choice_sum_all/len(res), pressure_tension_sum_all/len(res)]
 
 
 def return_true_result(ans: int, index: int):
