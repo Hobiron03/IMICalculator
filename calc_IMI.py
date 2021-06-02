@@ -14,7 +14,7 @@ def main():
     pressure_tension_sum = 0
     res = {}
 
-    file_path = "./IMI.csv"
+    file_path = "./IMIF.csv"
     with open(file_path) as f:
         f2 = csv.reader(f, delimiter=",", doublequote=True,
                         lineterminator="\r\n", quotechar='"', skipinitialspace=True)
