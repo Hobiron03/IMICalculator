@@ -1,4 +1,5 @@
 import csv
+import sys
 
 reverse_item = [2, 9, 11, 14, 19]
 interest_enjoyment_item = [1, 5, 8, 10, 14, 17, 20]
@@ -15,7 +16,7 @@ def main():
     res = {}
 
     file_path = "./IMIF.csv"
-    with open(file_path) as f:
+    with open(sys.argv[1]) as f:
         f2 = csv.reader(f, delimiter=",", doublequote=True,
                         lineterminator="\r\n", quotechar='"', skipinitialspace=True)
 
