@@ -15,15 +15,15 @@ def main():
     pressure_tension_sum = 0
     res = {}
 
-    file_path = "./IMIF.csv"
     with open(sys.argv[1]) as f:
         f2 = csv.reader(f, delimiter=",", doublequote=True,
                         lineterminator="\r\n", quotechar='"', skipinitialspace=True)
 
         header = next(f2)
         for i, row in enumerate(f2):
-            print(i)
+            # print("---------------------------------")
             for j, ans in enumerate(row):
+
                 if ans == '':
                     row[1] = i
 
@@ -49,7 +49,7 @@ def main():
             pressure_tension_sum = 0
 
     print(res)
-    print(calc_average(res))
+    # print(calc_average(res))
     # {0: [24, 8, 18, 5], 1: [36, 14, 24, 6], '加藤祐樹': [18, 9, 15, 17], '野中駿': [34, 22, 22, 5], '西村拓海': [24, 16, 19, 15]}
 
 
