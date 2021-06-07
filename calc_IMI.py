@@ -1,4 +1,6 @@
 import csv
+import statistics
+import math
 import sys
 
 reverse_item = [2, 9, 11, 14, 19]
@@ -48,8 +50,11 @@ def main():
             perceived_choice_sum = 0
             pressure_tension_sum = 0
 
-    print(res)
-    # print(calc_average(res))
+    for k, v in res.items():
+        print(k, v)
+
+    calc_average(res)
+    detect_median_and_mode_and_stdev(res)
 
 
 def calc_average(res):
@@ -65,7 +70,58 @@ def calc_average(res):
         perceived_choice_sum_all += val[2]
         pressure_tension_sum_all += val[3]
 
-    return [interest_enjoyment_sum_all/len(res), perceived_competence_sum_all/len(res), perceived_choice_sum_all/len(res), pressure_tension_sum_all/len(res)]
+    interest_enjoyment_ave = interest_enjoyment_sum_all/len(res)
+    perceived_competence_ave = perceived_competence_sum_all/len(res)
+    perceived_choice_ave = perceived_choice_sum_all/len(res)
+    pressure_tension_ave = pressure_tension_sum_all/len(res)
+
+    print("---------average-------")
+    print("interest/enjoyment ave: {}".format(interest_enjoyment_ave))
+    print("perceived competence ave: {}".format(perceived_competence_ave))
+    print("perceived choice ave: {}".format(perceived_choice_ave))
+    print("pressure tension ave: {}".format(pressure_tension_ave))
+
+    return [interest_enjoyment_ave, perceived_competence_ave, perceived_choice_ave, pressure_tension_ave]
+
+
+def detect_median_and_mode_and_stdev(res):
+    interest_enjoyments = []
+    perceived_competences = []
+    perceived_choices = []
+    pressure_tensions = []
+    # val == [1,2,3,4]
+    for val in res.values():
+        interest_enjoyments.append(val[0])
+        perceived_competences.append(val[1])
+        perceived_choices.append(val[2])
+        pressure_tensions.append(val[3])
+
+    print("---------median-------")
+    print("interest/enjoyment median: {}".format(statistics.median(interest_enjoyments)))
+    print("perceived competence median: {}".format(
+        statistics.median(perceived_competences)))
+    print("perceived choice median: {}".format(
+        statistics.median(perceived_choices)))
+    print("pressure tension median: {}".format(
+        statistics.median(pressure_tensions)))
+
+    # print("---------mode-------")
+    # print("interest/enjoyment mode: {}".format(statistics.mode(interest_enjoyments)))
+    # print("perceived competence mode: {}".format(
+    #     statistics.mode(perceived_competences)))
+    # print("perceived choice mode: {}".format(
+    #     statistics.mode(perceived_choices)))
+    # print("pressure tension mode: {}".format(
+    #     statistics.mode(pressure_tensions)))
+
+    print("---------stdev-------")
+    print("interest/enjoyment stdev: {}".format(statistics.stdev(interest_enjoyments)))
+    print("perceived competence stdev: {}".format(
+        statistics.stdev(perceived_competences)))
+    print("perceived choice stdev: {}".format(
+        statistics.stdev(perceived_choices)))
+    print("pressure tension stdev: {}".format(
+        statistics.stdev(pressure_tensions)))
 
 
 def return_true_result(ans: int, index: int):
